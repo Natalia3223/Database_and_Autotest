@@ -5,17 +5,10 @@ import data
 
 
 def post_orders_body(orders_body):  # Функция на создание заказа
-    return requests.post(configuration.URL_SERVICE + configuration.CREATE_ORDERS,
-                         # Ключевое слово и название пакета
-                         json=orders_body,  # Тело
-                         headers=data.headers)  # Заголовки
+    return requests.post(configuration.URL_SERVICE + configuration.CREATE_ORDERS, json=orders_body, headers=data.headers)
 
 
-response = post_orders_body(data.orders_body)  # Сохранение ответа на запрос
-print(response.status_code)  # Выведение на экран код ответа
-print(response.json())  # Выведение на экран тело ответа
-
-
-def get_orders_track(track_number):
-    response = requests.get(configuration.URL_SERVICE + configuration.CREATE_ORDERS_TRACK, params={'t': track_number}, headers=data.headers)
-    return response
+def get_orders_track(track_number):  # Функция на получение заказа по треку
+    return requests.get(configuration.URL_SERVICE + configuration.GET_ORDER_BY_TRACK, params={'t': track_number},
+                        headers=data.headers)
+    
