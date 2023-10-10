@@ -1,0 +1,12 @@
+scooter_rent=# SELECT courier."login", COUNT(orders.id) AS number_of_orders
+scooter_rent-# FROM "Couriers" AS courier
+scooter_rent-# INNER JOIN "Orders" AS orders ON courier.id = orders."courierId"
+scooter_rent-# WHERE orders."inDelivery" = true
+scooter_rent-# GROUP BY courier."login";
+ login | number_of_orders
+-------+------------------
+ NINYA |                2
+ NINYa |                6
+ Ninja |               10
+ ninja |                6
+(4 rows)
